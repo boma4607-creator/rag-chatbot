@@ -27,7 +27,7 @@ except KeyError as e:
 def init_llama_index():
     """LlamaIndex 전역 설정 (LLM, 임베딩, 청크 사이즈)"""
     # LLM 설정: Gemini 1.5 Flash (속도와 비용 효율성, 2.5는 현재 미출시로 최신 안정버전 사용)
-    llm = Gemini(model="gemini-1.5-flash", api_key=GEMINI_API_KEY, temperature=0.1)
+    llm = Gemini(model="models/gemini-1.5-flash", api_key=GEMINI_API_KEY, temperature=0.1)
     
     # 임베딩 설정: Gemini Embedding
     embed_model = GeminiEmbedding(model_name="models/embedding-001", api_key=GEMINI_API_KEY)
