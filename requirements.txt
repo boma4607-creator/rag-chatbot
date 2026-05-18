@@ -1,0 +1,8 @@
+streamlit
+supabase
+google-generativeai
+llama-index-core
+llama-index-llms-gemini
+llama-index-embeddings-gemini
+llama-index-vector-stores-supabase
+psycopg2-binary
