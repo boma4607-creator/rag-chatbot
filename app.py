@@ -3,11 +3,14 @@ import os
 import re
 import tempfile
 import json
+import google.generativeai as genai
 from supabase import create_client, Client
 from llama_index.core import Settings, VectorStoreIndex, SimpleDirectoryReader, StorageContext
 from llama_index.llms.gemini import Gemini
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.vector_stores.supabase import SupabaseVectorStore
+
+genai.configure(transport="grpc", api_version="v1")
 
 # --- 1. 페이지 설정 및 시크릿 로드 ---
 st.set_page_config(page_title="사업보고서 RAG 챗봇", page_icon="📊", layout="wide")
@@ -27,7 +30,7 @@ except KeyError as e:
 def init_llama_index():
     """LlamaIndex 전역 설정 (LLM, 임베딩, 청크 사이즈)"""
     # LLM 설정: Gemini 1.5 Flash (속도와 비용 효율성, 2.5는 현재 미출시로 최신 안정버전 사용)
-    llm = Gemini(model="models/gemini-1.5-flash-latest", api_key=GEMINI_API_KEY, temperature=0.1)
+  llm = Gemini(model="models/gemini-1.5-flash", api_key=GEMINI_API_KEY, temperature=0.1)
     
     # 임베딩 설정: Gemini Embedding
     embed_model = GeminiEmbedding(model_name="models/embedding-001", api_key=GEMINI_API_KEY)
