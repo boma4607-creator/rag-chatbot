@@ -1,8 +1,7 @@
 streamlit
-supabase
-google-generativeai
+supabase==2.4.0
 llama-index-core
-llama-index-llms-gemini
-llama-index-embeddings-gemini
+llama-index-llms-groq
+llama-index-embeddings-huggingface
 llama-index-vector-stores-supabase
 psycopg2-binary
